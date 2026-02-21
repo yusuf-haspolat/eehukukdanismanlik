@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haspolat Hukuk Bürosu | Av. Elif Haspolat</title>
+    <title>E&E Hukuk Danışmanlık | Av. Elif Haspolat & Av. Emine Eren</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -280,14 +280,42 @@
         .about-content {
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .about-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .about-intro p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .lawyers-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .lawyer-card {
+            background: var(--gray-light);
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .lawyer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .about-image {
             position: relative;
+            max-width: 280px;
+            margin: 0 auto 2rem;
         }
 
         .about-image-placeholder {
@@ -304,16 +332,16 @@
         .about-image-placeholder::before {
             content: '';
             position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
             border: 2px solid var(--gold);
         }
 
         .about-image-placeholder svg {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             fill: var(--gold);
             opacity: 0.8;
         }
@@ -321,12 +349,25 @@
         .about-image::after {
             content: '';
             position: absolute;
-            bottom: -20px;
-            right: -20px;
+            bottom: -15px;
+            right: -15px;
             width: 100%;
             height: 100%;
             border: 3px solid var(--gold);
             z-index: -1;
+        }
+
+        .lawyer-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--crimson);
+            margin-bottom: 1rem;
+        }
+
+        .lawyer-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
         }
 
         .about-text h3 {
@@ -346,9 +387,12 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #eee;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid #ddd;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .stat {
@@ -862,6 +906,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .lawyers-grid {
+                grid-template-columns: 1fr;
+            }
+
             .about-image {
                 max-width: 400px;
                 margin: 0 auto;
@@ -895,7 +943,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">Haspolat <span>Hukuk</span></a>
+            <a href="#" class="logo">E&E <span>Hukuk</span></a>
             <ul class="nav-links">
                 <li><a href="#anasayfa">Ana Sayfa</a></li>
                 <li><a href="#hizmetler">Hizmetlerimiz</a></li>
@@ -919,8 +967,8 @@
                     <path d="M32 4C30.9 4 30 4.9 30 6V10H12C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14H14L8 30C8 34.4 11.6 38 16 38C20.4 38 24 34.4 24 30L18 14H30V52H20C18.9 52 18 52.9 18 54V58C18 59.1 18.9 60 20 60H44C45.1 60 46 59.1 46 58V54C46 52.9 45.1 52 44 52H34V14H46L40 30C40 34.4 43.6 38 48 38C52.4 38 56 34.4 56 30L50 14H52C53.1 14 54 13.1 54 12C54 10.9 53.1 10 52 10H34V6C34 4.9 33.1 4 32 4ZM16 18L20 28H12L16 18ZM48 18L52 28H44L48 18Z"/>
                 </svg>
             </div>
-            <h1>Haspolat <span>Hukuk Bürosu</span></h1>
-            <p class="hero-subtitle">Av. Elif Haspolat</p>
+            <h1>E&E <span>Hukuk Danışmanlık</span></h1>
+            <p class="hero-subtitle">Av. Elif Haspolat & Av. Emine Eren</p>
             <div class="hero-divider"></div>
             <p>Hukuki süreçlerinizde güvenilir çözüm ortağınız. Yılların deneyimi ve uzman kadromuzla, haklarınızı en etkin şekilde savunuyoruz. Adalete olan inancımız ve müvekkillerimize olan bağlılığımızla, her davada yanınızdayız.</p>
             <a href="#iletisim" class="hero-cta">DANIŞMANLIK HİZMETİ</a>
@@ -934,32 +982,47 @@
             <div class="section-divider"></div>
         </div>
         <div class="about-content">
-            <div class="about-image">
-                <div class="about-image-placeholder">
-                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="32" cy="20" r="12"/>
-                        <path d="M32 36c-12 0-20 8-20 20v4h40v-4c0-12-8-20-20-20z"/>
-                    </svg>
+            <div class="about-intro">
+                <p>E&E Hukuk Danışmanlık, kurulduğu günden bu yana hukukun üstünlüğü ilkesine bağlı kalarak, bireysel ve kurumsal müvekkillerine en kaliteli hukuki hizmeti sunmayı amaç edinmiştir. Büromuz; dürüstlük, şeffaflık ve müvekkil memnuniyetini ön planda tutarak, her davaya özel yaklaşım geliştirmekte ve en etkili çözümleri üretmektedir.</p>
+            </div>
+            <div class="lawyers-grid">
+                <div class="lawyer-card">
+                    <div class="about-image">
+                        <div class="about-image-placeholder">
+                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="20" r="12"/>
+                                <path d="M32 36c-12 0-20 8-20 20v4h40v-4c0-12-8-20-20-20z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Av. Elif Haspolat</h3>
+                    <p>Hukuk fakültesinden mezun olduktan sonra çeşitli hukuk bürolarında ve kurumlarda edindiği deneyimlerle kendini geliştirmiştir. Özellikle ticaret hukuku, iş hukuku ve gayrimenkul hukuku alanlarında uzmanlaşmış olup, müvekkillerine kapsamlı ve etkili hukuki çözümler sunmaktadır.</p>
+                </div>
+                <div class="lawyer-card">
+                    <div class="about-image">
+                        <div class="about-image-placeholder">
+                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="20" r="12"/>
+                                <path d="M32 36c-12 0-20 8-20 20v4h40v-4c0-12-8-20-20-20z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Av. Emine Eren</h3>
+                    <p>Hukuk eğitimini tamamladıktan sonra aile hukuku, ceza hukuku ve tüketici hukuku alanlarında derinlemesine deneyim kazanmıştır. Müvekkillerinin haklarını korumak için titizlikle çalışmakta ve her davada en iyi sonucu elde etmek için özverili bir şekilde mücadele etmektedir.</p>
                 </div>
             </div>
-            <div class="about-text">
-                <h3>Av. Elif Haspolat</h3>
-                <p>Haspolat Hukuk Bürosu, kurulduğu günden bu yana hukukun üstünlüğü ilkesine bağlı kalarak, bireysel ve kurumsal müvekkillerine en kaliteli hukuki hizmeti sunmayı amaç edinmiştir.</p>
-                <p>Av. Elif Haspolat, hukuk fakültesinden mezun olduktan sonra çeşitli hukuk bürolarında ve kurumlarda edindiği deneyimlerle kendini geliştirmiş, ardından kendi hukuk bürosunu kurarak müvekkillerine bağımsız ve özverili bir hizmet sunmaya başlamıştır.</p>
-                <p>Büromuz; dürüstlük, şeffaflık ve müvekkil memnuniyetini ön planda tutarak, her davaya özel yaklaşım geliştirmekte ve en etkili çözümleri üretmektedir. Hukuki süreçlerinizde yanınızda olmaktan gurur duyarız.</p>
-                <div class="about-stats">
-                    <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Başarılı Dava</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Yıllık Deneyim</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">%98</div>
-                        <div class="stat-label">Müvekkil Memnuniyeti</div>
-                    </div>
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Başarılı Dava</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Yıllık Deneyim</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">%98</div>
+                    <div class="stat-label">Müvekkil Memnuniyeti</div>
                 </div>
             </div>
         </div>
@@ -1153,7 +1216,7 @@
                     </div>
                     <div>
                         <h4>Adres</h4>
-                        <p>Örnek Mahallesi, Adalet Caddesi No: 123<br>Kat: 5, Daire: 10<br>Çankaya / Ankara</p>
+                        <p>Mehmet Akif Ersoy Mahallesi<br>325. Sokak Dosima Plaza No:3/28<br>Yenimahalle / Ankara</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -1164,7 +1227,7 @@
                     </div>
                     <div>
                         <h4>Telefon</h4>
-                        <p>+90 (312) 123 45 67<br>+90 (555) 123 45 67</p>
+                        <p><strong>Av. Elif Haspolat:</strong> +90 506 956 22 19<br><strong>Av. Emine Eren:</strong> +90 543 470 74 86</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -1175,7 +1238,7 @@
                     </div>
                     <div>
                         <h4>E-Posta</h4>
-                        <p>info@haspolathukuk.com<br>av.elifhaspolat@haspolathukuk.com</p>
+                        <p><strong>Ofis:</strong> hukukdanismanlikee@gmail.com<br><strong>Av. Elif Haspolat:</strong> avelifhaspolat@gmail.com<br><strong>Av. Emine Eren:</strong> av.emineren@eehukuk.com</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -1221,8 +1284,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-about">
-                <a href="#" class="logo">Haspolat <span>Hukuk</span></a>
-                <p>Haspolat Hukuk Bürosu, müvekkillerine en kaliteli hukuki hizmeti sunmayı amaç edinmiş, güvenilir ve deneyimli bir hukuk bürosudur. Adalete olan inancımızla her zaman yanınızdayız.</p>
+                <a href="#" class="logo">E&E <span>Hukuk</span></a>
+                <p>E&E Hukuk Danışmanlık, müvekkillerine en kaliteli hukuki hizmeti sunmayı amaç edinmiş, güvenilir ve deneyimli bir hukuk bürosudur. Adalete olan inancımızla her zaman yanınızdayız.</p>
             </div>
             <div class="footer-links">
                 <h4>Hızlı Bağlantılar</h4>
@@ -1239,11 +1302,10 @@
                 <p><strong>Pazartesi - Cuma:</strong> 09:00 - 18:00</p>
                 <p><strong>Cumartesi:</strong> 10:00 - 14:00</p>
                 <p><strong>Pazar:</strong> Kapalı</p>
-                <p style="margin-top: 1rem;"><strong>Acil durumlar için:</strong><br>+90 (555) 123 45 67</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Haspolat Hukuk Bürosu. Tüm hakları saklıdır. | Av. Elif Haspolat</p>
+            <p>&copy; 2026 E&E Hukuk Danışmanlık. Tüm hakları saklıdır. | Av. Elif Haspolat & Av. Emine Eren</p>
         </div>
     </footer>
 
