@@ -565,6 +565,7 @@
             background: var(--gray-light);
             overflow: hidden;
             transition: all 0.4s ease;
+            cursor: pointer;
         }
 
         .blog-card:hover {
@@ -578,6 +579,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.1);
         }
 
         .blog-image svg {
@@ -587,8 +601,28 @@
             opacity: 0.5;
         }
 
+        .blog-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--gold);
+            color: var(--crimson-dark);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .blog-content {
             padding: 1.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
         }
 
         .blog-date {
@@ -596,7 +630,11 @@
             color: var(--gold-dark);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+        }
+
+        .blog-author {
+            font-size: 0.75rem;
+            color: var(--gray);
         }
 
         .blog-card h3 {
@@ -621,10 +659,192 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .blog-link:hover {
             color: var(--gold-dark);
+        }
+
+        .blog-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .blog-link svg {
+            transform: translateX(5px);
+        }
+
+        /* Blog Modal */
+        .blog-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .blog-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            opacity: 1;
+        }
+
+        .blog-modal-content {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            margin: 2rem auto;
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-modal.active .blog-modal-content {
+            transform: translateY(0);
+        }
+
+        .blog-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--crimson);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .blog-modal-close:hover {
+            background: var(--gold);
+            transform: rotate(90deg);
+        }
+
+        .blog-modal-close svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .blog-modal-close:hover svg {
+            fill: var(--crimson-dark);
+        }
+
+        .blog-modal-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .blog-modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-modal-image svg {
+            width: 100px;
+            height: 100px;
+            fill: var(--gold);
+            opacity: 0.5;
+        }
+
+        .blog-modal-body {
+            padding: 3rem;
+        }
+
+        .blog-modal-category {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--crimson-dark);
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .blog-modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--crimson);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-modal-meta {
+            display: flex;
+            gap: 2rem;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .blog-modal-meta span {
+            font-size: 0.9rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-modal-meta svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gold-dark);
+        }
+
+        .blog-modal-text {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .blog-modal-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-modal-text h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--crimson);
+            margin: 2rem 0 1rem;
+        }
+
+        .blog-modal-text ul {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        .blog-modal-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-modal-text strong {
+            color: var(--crimson);
         }
 
         /* Contact Section */
@@ -970,6 +1190,23 @@
             .section-header h2 {
                 font-size: 2rem;
             }
+
+            .blog-modal {
+                padding: 1rem;
+            }
+
+            .blog-modal-body {
+                padding: 1.5rem;
+            }
+
+            .blog-modal-title {
+                font-size: 1.6rem;
+            }
+
+            .blog-modal-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -1004,7 +1241,7 @@
             <h1>E&E <span>Hukuk Danışmanlık</span></h1>
             <p class="hero-subtitle">Av. Elif Haspolat & Av. Emine Eren</p>
             <div class="hero-divider"></div>
-            <p>Hukuki süreçlerinizde güvenilir çözüm ortağınız. Yılların deneyimi ve uzman kadromuzla, haklarınızı en etkin şekilde savunuyoruz. Adalete olan inancımız ve müvekkillerimize olan bağlılığımızla, her davada yanınızdayız.</p>
+            <p>Hukuki süreçlerin her aşamasında şeffaflığı ve ulaşılabilirliği temel alan E&E Hukuk Danışmanlık; deneyimli kadrosuyla haklarınızı profesyonel bir titizlikle korur. Hukuki ihtiyaçlarınızı güvenle emanet edebileceğiniz, çözüm odaklı bir temsil için yanınızdayız.</p>
             <a href="#iletisim" class="hero-cta">DANIŞMANLIK HİZMETİ</a>
         </div>
     </section>
@@ -1017,7 +1254,9 @@
         </div>
         <div class="about-content">
             <div class="about-intro">
-                <p>E&E Hukuk Danışmanlık, kurulduğu günden bu yana hukukun üstünlüğü ilkesine bağlı kalarak, bireysel ve kurumsal müvekkillerine en kaliteli hukuki hizmeti sunmayı amaç edinmiştir. Büromuz; dürüstlük, şeffaflık ve müvekkil memnuniyetini ön planda tutarak, her davaya özel yaklaşım geliştirmekte ve en etkili çözümleri üretmektedir.</p>
+                <p>Haklarınızın Güvencesi, Çözümlerinizin Stratejik Ortağıyız.</p>
+                <br>
+                <p>E&E Hukuk Danışmanlık olarak, uyuşmazlıkları sadece birer dosya değil, birer güven ilişkisi olarak ele alıyoruz. Disiplinlerarası iş birliğimiz ve sonuç odaklı yaklaşımımızla, hukuki süreçlerinizin her aşamasında şeffaf bir rehberlik sağlıyoruz. Strateji, titizlik ve adaletle; haklarınızı savunmak için buradayız. Sizin için değerli olanı korumak, bizim önceliğimizdir.</p>
             </div>
             <div class="lawyers-grid">
                 <div class="lawyer-card">
@@ -1030,7 +1269,11 @@
                         </div>
                     </div>
                     <h3>Av. Elif Haspolat</h3>
-                    <p>Hukuk fakültesinden mezun olduktan sonra çeşitli hukuk bürolarında ve kurumlarda edindiği deneyimlerle kendini geliştirmiştir. Özellikle ticaret hukuku, iş hukuku ve gayrimenkul hukuku alanlarında uzmanlaşmış olup, müvekkillerine kapsamlı ve etkili hukuki çözümler sunmaktadır.</p>
+                    <p>Hukuk eğitimini tamamladıktan sonra, hukukun farklı dinamiklerine sahip kurumsal ve özel alanlarda uzun yıllar deneyim kazanmıştır. Kariyerini; ticaretin hızı, çalışma hayatının hak dengesi ve gayrimenkul dünyasının hukuki güvenliği üzerine inşa ederken; Aile ve Miras Hukuku, Şirketler Hukuku, Ceza Hukuku, Ticaret Hukuku ve Sözleşmeler Hukuku gibi hayatın doğrudan içinde olan alanlarda da derinlemesine bir tecrübe edinmiştir.</p>
+                    <br>
+                    <p>"Her hukuki sorunun kendine has bir hikayesi ve çözümü vardır" anlayışıyla hareket eden Haspolat, müvekkillerinin ihtiyaçlarını sadece birer hukuki dosya olarak değil, temeli şeffaflığa dayalı bir güven ilişkisi olarak ele alır. Modern avukatlık vizyonunu kesintisiz erişilebilirlik ilkesiyle birleştirerek; müvekkillerinin her aşamada bilgilendirildiği, sorularına doğrudan yanıt bulabildiği bir danışmanlık süreci yürütür.</p>
+                    <br>
+                    <p>Geniş bir yelpazeye yayılan hukuki tecrübesini, güncel mevzuat takibi ve titiz çalışma prensibiyle harmanlayarak; karmaşık süreçleri müvekkilleri için yalın, hızlı ve uygulanabilir çözümlere dönüştürmeyi hedeflemektedir.</p>
                 </div>
                 <div class="lawyer-card">
                     <div class="about-image">
@@ -1042,7 +1285,11 @@
                         </div>
                     </div>
                     <h3>Av. Emine Eren</h3>
-                    <p>Hukuk eğitimini tamamladıktan sonra aile hukuku, ceza hukuku ve tüketici hukuku alanlarında derinlemesine deneyim kazanmıştır. Müvekkillerinin haklarını korumak için titizlikle çalışmakta ve her davada en iyi sonucu elde etmek için özverili bir şekilde mücadele etmektedir.</p>
+                    <p>Hukuk eğitimini tamamlamasının ardından, bireyin hak ve özgürlüklerinin en hassas olduğu Aile Hukuku, Ceza Hukuku , İş Hukuku ve Sigorta Hukuku alanlarında yoğunlaşarak geniş bir saha tecrübesi edinmiştir. Özellikle kriz yönetiminin ve hızlı karar almanın kritik olduğu süreçlerde sergilediği kararlı duruşla; Ticaret Hukuku ve Tazminat Hukuku gibi teknik detayların öne çıktığı alanlarda da müvekkillerine güçlü bir hukuki koruma kalkanı sağlamaktadır.</p>
+                    <br>
+                    <p>"Etkili bir hukuki çözüm; her ayrıntının titizlikle analiz edildiği, doğru bir strateji ve kararlı bir takiple mümkündür." prensibiyle hareket eden Eren, her dosyayı en ince detayına kadar analiz ederek müvekkillerinin hak arayışını bir yaşam mücadelesi titizliğiyle ele alır. Müvekkillerine hem bireysel hem de kurumsal ihtiyaçlarında 360 derecelik eksiksiz bir hukuki perspektif sunar.</p>
+                    <br>
+                    <p>Müvekkil ilişkilerinde dürüstlük ve tam şeffaflık ilkesinden ödün vermeyen Eren; uyuşmazlıkların çözümünde müvekkil lehine en etkin ve adil sonuçlara ulaşmak adına, empatik yaklaşımını profesyonel bir savunma iradesiyle harmanlamaktadır.</p>
                 </div>
             </div>
             <div class="about-stats">
@@ -1076,7 +1323,7 @@
                     </svg>
                 </div>
                 <h3>Hukuki Danışmanlık</h3>
-                <p>Bireysel ve kurumsal müvekkillerimize önleyici hukuk anlayışıyla kapsamlı danışmanlık hizmetleri sunuyoruz.</p>
+                <p>Hukuki süreçlerin en verimli yönetimi, henüz uyuşmazlık ortaya çıkmadan atılan doğru adımlarla mümkündür. E&E Hukuk Danışmanlık olarak, bireysel ve kurumsal müvekkillerimize sunduğumuz önleyici hukuk yaklaşımıyla, riskleri henüz oluşmadan tespit ediyor ve her adımda güvenli bir zemin inşa ediyoruz. Mevcut anlaşmazlıklarda ise süreci mahkeme salonlarına taşımadan önce; risk analizleri ve çözüm senaryolarını içeren dava öncesi uyuşmazlık yol haritası oluşturarak en hızlı ve ekonomik sonuca odaklanıyoruz. Şirketlerin kurumsal yapılarından bireysel hak aramalarına kadar her aşamada; uyuşmazlıkları müzakere ve stratejik planlamayla yönetiyor, hukuki belirsizlikleri ortadan kaldırarak vaktinizi ve haklarınızı güvence altına alıyoruz.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">
@@ -1085,7 +1332,7 @@
                     </svg>
                 </div>
                 <h3>Dava Takibi</h3>
-                <p>Her türlü hukuki uyuşmazlıkta davalarınızı titizlikle takip ediyor, haklarınızı en etkin şekilde savunuyoruz.</p>
+                <p>Hukuki uyuşmazlıkların yargı aşamasında, dosyanızın her evresini büyük bir titizlikle ve stratejik bir odakla takip ediyoruz. Dava sürecini sadece hukuki bir prosedür olarak değil, hak arayışınızın en kritik evresi olarak görüyor; dilekçelerden duruşmalara kadar her aşamada şeffaf bir süreç yönetimi sunuyoruz. E&E Hukuk Danışmanlık olarak, karmaşık yargı mekanizmalarını sizin adınıza basitleştiriyor, güncel mevzuat ve yerleşik içtihatlar ışığında müvekkilimizin menfaatlerini en üst düzeyde koruyoruz.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">
@@ -1094,7 +1341,9 @@
                     </svg>
                 </div>
                 <h3>Sözleşme Hazırlama</h3>
-                <p>Ticari ve bireysel ihtiyaçlarınıza uygun, hukuki güvence sağlayan sözleşmeler hazırlıyoruz.</p>
+                <p>Sözleşmeler, sadece hukuki metinler değil, gelecekte doğabilecek uyuşmazlıklara karşı inşa ettiğiniz en güçlü kalkanınızdır. Ticari operasyonlarınızdan bireysel yatırımlarınıza kadar her alanda; risklerinizi detaylıca analiz ediyor, haklarınızı koruma altına alan, esnek ve tamamen ihtiyaçlarınıza odaklanan sözleşmeler kurguluyoruz. E&E Hukuk Danışmanlık olarak, standart taslakların ötesine geçerek; müzakere aşamasından imza anına kadar çıkarlarınızı profesyonel bir titizlikle koruyoruz.</p>
+            </div>
+            <div>
             </div>
             <div class="service-card">
                 <div class="service-icon">
@@ -1102,10 +1351,10 @@
                         <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
                     </svg>
                 </div>
-                <h3>Arabuluculuk</h3>
-                <p>Uyuşmazlıkların mahkeme dışında, dostane yollarla çözümü için profesyonel arabuluculuk hizmeti veriyoruz.</p>
+                <h3>Arabuluculuk ve Uyuşmazlık Çözümü</h3>
+                <p>E&E Hukuk Danışmanlık olarak, her hukuki uyuşmazlığın çözümünün mahkeme salonlarından geçmediğine inanıyoruz. Arabuluculuk hizmetimizle, taraflar arasındaki gerginliği profesyonel ve yapıcı bir diyalog zeminine taşıyor; yargı sürecinin getirdiği zaman kaybını ve belirsizliği ortadan kaldırıyoruz. Tarafların menfaatlerini merkeze alan dostane bir yaklaşımla, uyuşmazlığı mahkeme dışında, tamamen gizlilik esasıyla ve hukuki olarak kesin hüküm niteliğinde çözüme kavuşturuyoruz.</p>
             </div>
-            <div class="service-card">
+<!--            <div class="service-card">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
@@ -1123,6 +1372,7 @@
                 <h3>Aile Hukuku</h3>
                 <p>Boşanma, velayet, nafaka ve miras konularında hassas ve profesyonel destek sunuyoruz.</p>
             </div>
+        -->
         </div>
     </section>
 
@@ -1181,6 +1431,63 @@
                 </svg>
                 <h4>Miras Hukuku</h4>
             </div>
+            <div class="area-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-car">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M14 5a1 1 0 0 1 .694 .28l.087 .095l3.699 4.625h.52a3 3 0 0 1 2.995 2.824l.005 .176v4a1 1 0 0 1 -1 1h-1.171a3.001 3.001 0 0 1 -5.658 0h-4.342a3.001 3.001 0 0 1 -5.658 0h-1.171a1 1 0 0 1 -1 -1v-6l.007 -.117l.008 -.056l.017 -.078l.012 -.036l.014 -.05l2.014 -5.034a1 1 0 0 1 .928 -.629zm-7 11a1 1 0 1 0 0 2a1 1 0 0 0 0 -2m10 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2m-6 -9h-5.324l-1.2 3h6.524zm2.52 0h-.52v3h2.92z" />
+                </svg>
+                <h4>Araç Değer Kaybı ve Mahrumiyet</h4>
+            </div>
+            <div class="area-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-info-circle">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -19.995 .324l-.005 -.324l.004 -.28c.148 -5.393 4.566 -9.72 9.996 -9.72zm0 9h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z" />
+                </svg>
+                <h4>İdare Hukuku</h4>
+            </div>
+            <div class="area-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-id">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M18 3a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-10q 0 -.053 .005 -.102a3.994 3.994 0 0 1 3.995 -3.898zm-1 12h-10a1 1 0 0 0 0 2h10a1 1 0 0 0 0 -2m-8 -8a2.995 2.995 0 0 0 -2.995 2.898a1 1 0 0 0 -.005 .102a3 3 0 1 0 3 -3m8 4h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0 -2m0 -4h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0 -2" />
+                </svg>
+                <h4>Sözleşmeler Hukuku</h4>
+            </div>
+            <div class="area-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-user">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+                    <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
+                </svg>
+                <h4>KVKK Hukuku</h4>
+            </div>
+            <div class="area-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-briefcase">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M22 13.478v4.522a3 3 0 0 1 -3 3h-14a3 3 0 0 1 -3 -3v-4.522l.553 .277a20.999 20.999 0 0 0 18.897 -.002l.55 -.275zm-8 -11.478a3 3 0 0 1 3 3v1h2a3 3 0 0 1 3 3v2.242l-1.447 .724a19.002 19.002 0 0 1 -16.726 .186l-.647 -.32l-1.18 -.59v-2.242a3 3 0 0 1 3 -3h2v-1a3 3 0 0 1 3 -3h4zm-2 8a1 1 0 0 0 -1 1a1 1 0 1 0 2 .01c0 -.562 -.448 -1.01 -1 -1.01zm2 -6h-4a1 1 0 0 0 -1 1v1h6v-1a1 1 0 0 0 -1 -1z" />
+                </svg>
+                <h4>Şirketler Hukuku</h4>
+            </div>
+            <div class="area-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-circle-check">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" />
+                </svg>
+                <h4>Sigorta Hukuku</h4>
+            </div>
+            <div class="area-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-stack-3">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M20.894 17.553a1 1 0 0 1 -.447 1.341l-8 4a1 1 0 0 1 -.894 0l-8 -4a1 1 0 0 1 .894 -1.788l7.553 3.774l7.554 -3.775a1 1 0 0 1 1.341 .447m0 -4a1 1 0 0 1 -.447 1.341l-8 4a1 1 0 0 1 -.894 0l-8 -4a1 1 0 0 1 .894 -1.788l7.552 3.775l7.554 -3.775a1 1 0 0 1 1.341 .447m0 -4a1 1 0 0 1 -.447 1.341l-8 4a1 1 0 0 1 -.894 0l-8 -4a1 1 0 0 1 .894 -1.788l7.552 3.775l7.554 -3.775a1 1 0 0 1 1.341 .447m-8.887 -8.552q .056 0 .111 .007l.111 .02l.086 .024l.012 .006l.012 .002l.029 .014l.05 .019l.016 .009l.012 .005l8 4a1 1 0 0 1 0 1.788l-8 4a1 1 0 0 1 -.894 0l-8 -4a1 1 0 0 1 0 -1.788l8 -4l.011 -.005l.018 -.01l.078 -.032l.011 -.002l.013 -.006l.086 -.024l.11 -.02l.056 -.005z" />
+                </svg>
+                <h4>Vergi Hukuku</h4>
+            </div>
+            <div class="area-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-trolley">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M20.555 4.168a1 1 0 0 1 .277 1.387l-2.621 3.932l1.236 .619a1 1 0 0 1 -.894 1.788l-1.46 -.73l-3.876 5.815a3 3 0 1 1 -5.217 2.021l.005 -.176q .008 -.135 .027 -.267l-2.587 -1.725a1 1 0 0 1 1.11 -1.664l2.424 1.615a2.99 2.99 0 0 1 2.464 -.75l7.725 -11.588a1 1 0 0 1 1.387 -.277m-10.567 -.399l.14 .082l3.307 2.104a2.3 2.3 0 0 1 .7 3.185l-3.094 4.81a2.3 2.3 0 0 1 -3.17 .698l-3.306 -2.104a2.3 2.3 0 0 1 -.7 -3.185l3.094 -4.81a2.3 2.3 0 0 1 3.029 -.78" />
+                </svg>
+                <h4>İş ve Sosyal Güvenlik Hukuku</h4>
+            </div>
         </div>
     </section>
 
@@ -1190,48 +1497,43 @@
             <h2>Blog</h2>
             <div class="section-divider"></div>
         </div>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <div class="blog-image">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-                    </svg>
-                </div>
-                <div class="blog-content">
-                    <p class="blog-date">15 Ocak 2026</p>
-                    <h3>İş Hukukunda Kıdem Tazminatı Hesaplaması</h3>
-                    <p>Kıdem tazminatı hesaplamasında dikkat edilmesi gereken önemli noktalar ve güncel mevzuat değişiklikleri...</p>
-                    <a href="#" class="blog-link">Devamını Oku →</a>
-                </div>
+        <div class="blog-grid" id="blog-grid">
+            <!-- Blog kartları JavaScript ile yüklenecek -->
+        </div>
+    </section>
+
+    <!-- Blog Modal -->
+    <div class="blog-modal" id="blog-modal">
+        <div class="blog-modal-content">
+            <button class="blog-modal-close" onclick="closeBlogModal()">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <div class="blog-modal-image" id="modal-image">
+                <!-- Resim veya icon buraya gelecek -->
             </div>
-            <div class="blog-card">
-                <div class="blog-image">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                    </svg>
+            <div class="blog-modal-body">
+                <span class="blog-modal-category" id="modal-category"></span>
+                <h2 class="blog-modal-title" id="modal-title"></h2>
+                <div class="blog-modal-meta">
+                    <span id="modal-date">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/>
+                        </svg>
+                    </span>
+                    <span id="modal-author">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </span>
                 </div>
-                <div class="blog-content">
-                    <p class="blog-date">10 Ocak 2026</p>
-                    <h3>Gayrimenkul Satışında Dikkat Edilmesi Gerekenler</h3>
-                    <p>Tapu devri sürecinde hukuki güvenliğinizi sağlamak için bilmeniz gereken temel konular...</p>
-                    <a href="#" class="blog-link">Devamını Oku →</a>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="blog-image">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                    </svg>
-                </div>
-                <div class="blog-content">
-                    <p class="blog-date">5 Ocak 2026</p>
-                    <h3>Boşanma Davalarında Velayet Hakkı</h3>
-                    <p>Çocuğun üstün yararı ilkesi çerçevesinde velayet hakkının belirlenmesi ve uygulamada karşılaşılan durumlar...</p>
-                    <a href="#" class="blog-link">Devamını Oku →</a>
+                <div class="blog-modal-text" id="modal-content">
+                    <!-- Blog içeriği buraya gelecek -->
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Contact Section -->
     <section class="contact" id="iletisim">
@@ -1346,22 +1648,335 @@
         </div>
     </footer>
 
+    <!-- Blog Data Script -->
+    <script>
+    /**
+     * E&E HUKUK DANIŞMANLIK - BLOG YÖNETİM SİSTEMİ
+     * =============================================
+     * 
+     * Bu bölüm tüm blog yazılarını içerir.
+     * Yeni blog eklemek veya mevcut blogları düzenlemek için bu bölümü kullanın.
+     * 
+     * BLOG EKLEME KILAVUZU:
+     * --------------------
+     * Yeni bir blog eklemek için aşağıdaki şablonu kopyalayın ve blogPosts dizisinin
+     * başına yapıştırın (en yeni blog en üstte olmalı):
+     * 
+     * {
+     *     id: 4,                                    // Benzersiz numara (bir öncekinden büyük)
+     *     title: "Blog Başlığı",                    // Blog başlığı
+     *     date: "20 Şubat 2026",                    // Yayın tarihi
+     *     category: "İş Hukuku",                    // Kategori
+     *     author: "Av. Elif Haspolat",              // Yazar
+     *     image: "blog-images/resim.jpg",           // Resim yolu (opsiyonel - boş bırakılabilir: "")
+     *     summary: "Kısa özet...",                  // Ana sayfada görünecek özet (max 150 karakter)
+     *     content: `                                // Tam içerik (backtick içinde)
+     *         <p>Paragraf 1</p>
+     *         <p>Paragraf 2</p>
+     *         <h4>Alt Başlık</h4>
+     *         <p>Devam...</p>
+     *         <ul>
+     *             <li>Madde 1</li>
+     *             <li>Madde 2</li>
+     *         </ul>
+     *     `
+     * },
+     * 
+     * RESİM EKLEME:
+     * -------------
+     * 1. Resmi "blog-images" klasörüne yükleyin
+     * 2. image alanına dosya yolunu yazın: "blog-images/resim-adi.jpg"
+     * 3. Resim yoksa boş bırakın: ""
+     * 
+     * Desteklenen resim formatları: .jpg, .jpeg, .png, .webp
+     * Önerilen boyut: 800x450 piksel (16:9 oranı)
+     * 
+     * BLOG SİLME:
+     * -----------
+     * Silmek istediğiniz blogun tüm {...} bloğunu silin
+     * 
+     */
+
+    const blogPosts = [
+        // ═══════════════════════════════════════════════════════════════
+        // BLOG 1 - İş Hukuku
+        // ═══════════════════════════════════════════════════════════════
+        {
+            id: 1,
+            title: "İş Hukukunda Kıdem Tazminatı Hesaplaması",
+            date: "15 Ocak 2026",
+            category: "İş Hukuku",
+            author: "Av. Elif Haspolat",
+            image: "", // Resim eklemek için: "blog-images/kidem-tazminati.jpg"
+            summary: "Kıdem tazminatı hesaplamasında dikkat edilmesi gereken önemli noktalar ve güncel mevzuat değişiklikleri...",
+            content: `
+                <p>Kıdem tazminatı, işçinin işyerinde geçirdiği süre boyunca emeğinin karşılığı olarak hak kazandığı önemli bir tazminat türüdür. 4857 sayılı İş Kanunu ve ilgili mevzuat çerçevesinde belirlenen kıdem tazminatı, işçi hakları arasında önemli bir yere sahiptir.</p>
+                
+                <h4>Kıdem Tazminatına Hak Kazanma Şartları</h4>
+                <p>İşçinin kıdem tazminatına hak kazanabilmesi için belirli şartların oluşması gerekmektedir:</p>
+                <ul>
+                    <li>İşçinin aynı işverenin işyerinde en az 1 yıl çalışmış olması</li>
+                    <li>İş sözleşmesinin kanunda belirtilen nedenlerle sona ermesi</li>
+                    <li>İşçinin kendi isteğiyle işten ayrılması halinde haklı nedenin bulunması</li>
+                </ul>
+                
+                <h4>Hesaplama Yöntemi</h4>
+                <p>Kıdem tazminatı hesaplamasında işçinin son brüt ücreti esas alınır. Her tam yıl için 30 günlük brüt ücret tutarında tazminat hesaplanır. Yıldan artan süreler için de orantılı hesaplama yapılır.</p>
+                
+                <h4>2026 Yılı Kıdem Tazminatı Tavanı</h4>
+                <p>Her yıl güncellenen kıdem tazminatı tavanı, işçinin alabileceği maksimum tutarı belirler. Güncel tavan tutarı için Çalışma ve Sosyal Güvenlik Bakanlığı'nın açıklamalarını takip etmeniz önerilir.</p>
+                
+                <p><strong>Önemli Not:</strong> Kıdem tazminatı hesaplamaları karmaşık olabilir ve her durum kendine özgü değerlendirme gerektirir. Haklarınızı tam olarak öğrenmek ve doğru hesaplama için bir hukuk uzmanına danışmanızı öneririz.</p>
+            `
+        },
+
+        // ═══════════════════════════════════════════════════════════════
+        // BLOG 2 - Gayrimenkul Hukuku
+        // ═══════════════════════════════════════════════════════════════
+        {
+            id: 2,
+            title: "Gayrimenkul Satışında Dikkat Edilmesi Gerekenler",
+            date: "10 Ocak 2026",
+            category: "Gayrimenkul Hukuku",
+            author: "Av. Emine Eren",
+            image: "", // Resim eklemek için: "blog-images/gayrimenkul.jpg"
+            summary: "Tapu devri sürecinde hukuki güvenliğinizi sağlamak için bilmeniz gereken temel konular...",
+            content: `
+                <p>Gayrimenkul alım satımı, hayatımızın en önemli finansal kararlarından biridir. Bu süreçte yapılacak hatalar ciddi maddi ve hukuki sorunlara yol açabilir. İşte dikkat etmeniz gereken temel noktalar:</p>
+                
+                <h4>Tapu Kaydı İncelemesi</h4>
+                <p>Satın almayı düşündüğünüz gayrimenkulün tapu kaydını mutlaka inceleyin. Tapu kaydında şunlara dikkat edin:</p>
+                <ul>
+                    <li>Mülkiyet durumu ve malikler</li>
+                    <li>İpotek, haciz veya şerh bulunup bulunmadığı</li>
+                    <li>İmar durumu ve kullanım amacı</li>
+                    <li>Kat irtifakı veya kat mülkiyeti durumu</li>
+                </ul>
+                
+                <h4>Satış Vaadi Sözleşmesi</h4>
+                <p>Tapu devri öncesinde yapılan satış vaadi sözleşmeleri noter huzurunda düzenlenmeli ve tapuya şerh edilmelidir. Bu, alıcının haklarını güvence altına alır.</p>
+                
+                <h4>Vergi ve Harçlar</h4>
+                <p>Gayrimenkul satışında ödenmesi gereken vergi ve harçlar:</p>
+                <ul>
+                    <li>Tapu harcı (alıcı ve satıcı ayrı ayrı)</li>
+                    <li>Döner sermaye harcı</li>
+                    <li>Değer artış kazancı vergisi (satıcı için)</li>
+                </ul>
+                
+                <h4>Emlakçı ile Çalışma</h4>
+                <p>Emlakçı ile çalışıyorsanız, komisyon oranı ve ödeme koşullarını yazılı olarak belirleyin. Emlakçılık sözleşmesini dikkatle okuyun.</p>
+                
+                <p><strong>Tavsiyemiz:</strong> Gayrimenkul işlemlerinde hukuki güvenliğiniz için mutlaka bir avukattan destek alın. Küçük görünen detaylar büyük sorunlara yol açabilir.</p>
+            `
+        },
+
+        // ═══════════════════════════════════════════════════════════════
+        // BLOG 3 - Aile Hukuku
+        // ═══════════════════════════════════════════════════════════════
+        {
+            id: 3,
+            title: "Boşanma Davalarında Velayet Hakkı",
+            date: "5 Ocak 2026",
+            category: "Aile Hukuku",
+            author: "Av. Emine Eren",
+            image: "", // Resim eklemek için: "blog-images/velayet.jpg"
+            summary: "Çocuğun üstün yararı ilkesi çerçevesinde velayet hakkının belirlenmesi ve uygulamada karşılaşılan durumlar...",
+            content: `
+                <p>Boşanma davalarında en hassas konulardan biri, çocukların velayetinin kime verileceğidir. Türk Medeni Kanunu, velayet konusunda "çocuğun üstün yararı" ilkesini esas almaktadır.</p>
+                
+                <h4>Velayet Nedir?</h4>
+                <p>Velayet, çocuğun bakımı, eğitimi, korunması ve temsili konusunda anne ve babaya tanınan hak ve yükümlülükler bütünüdür. Evlilik birliği içinde velayet anne ve baba tarafından birlikte kullanılır.</p>
+                
+                <h4>Velayet Kararında Dikkat Edilen Hususlar</h4>
+                <p>Mahkeme velayet kararı verirken şu faktörleri değerlendirir:</p>
+                <ul>
+                    <li>Çocuğun yaşı ve ihtiyaçları</li>
+                    <li>Anne ve babanın çocuğa bakım kapasitesi</li>
+                    <li>Çocuğun eğitim ve gelişim ortamı</li>
+                    <li>Çocuğun varsa tercihi (belirli yaş üstü için)</li>
+                    <li>Kardeşlerin birlikte kalması ilkesi</li>
+                    <li>Anne ve babanın psikolojik durumu</li>
+                </ul>
+                
+                <h4>Ortak Velayet</h4>
+                <p>Türk hukukunda boşanma sonrası ortak velayet uygulaması sınırlıdır. Ancak ebeveynlerin anlaşması halinde kişisel ilişki düzenlemesi geniş tutulabilir.</p>
+                
+                <h4>Kişisel İlişki Hakkı</h4>
+                <p>Velayeti almayan ebeveynin çocukla kişisel ilişki kurma hakkı vardır. Bu hak, çocuğun yararına uygun şekilde düzenlenir ve mahkeme kararıyla belirlenir.</p>
+                
+                <h4>Velayet Değişikliği</h4>
+                <p>Koşulların değişmesi halinde velayet kararının değiştirilmesi talep edilebilir. Bunun için çocuğun yararının gerektirdiğinin ispatlanması gerekir.</p>
+                
+                <p><strong>Unutmayın:</strong> Velayet davaları çocukların geleceğini doğrudan etkiler. Bu süreçte profesyonel hukuki destek almak, hem sizin hem çocuğunuzun haklarının korunması açısından kritik öneme sahiptir.</p>
+            `
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // YENİ BLOG EKLEMEK İÇİN YUKARIYA KOPYALAYIN
+        // Örnek şablon için dosyanın başındaki açıklamalara bakın
+        // ═══════════════════════════════════════════════════════════════
+    ];
+
+    // Blog icon'ları - kategori bazlı
+    const categoryIcons = {
+        "İş Hukuku": `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>`,
+        "Gayrimenkul Hukuku": `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>`,
+        "Aile Hukuku": `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>`,
+        "Ticaret Hukuku": `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/></svg>`,
+        "Ceza Hukuku": `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>`,
+        "Tüketici Hukuku": `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>`,
+        "default": `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>`
+    };
+
+    // Icon'u kategoriye göre getir
+    function getCategoryIcon(category) {
+        return categoryIcons[category] || categoryIcons["default"];
+    }
+    </script>
+
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
     <script>
-        // EmailJS Initialization
-        // ÖNEMLİ: Aşağıdaki değerleri kendi EmailJS hesabınızdan alın
-        // 1. https://www.emailjs.com adresine gidin ve hesap oluşturun
-        // 2. Email Services > Add New Service > Gmail seçin
-        // 3. Email Templates > Create New Template ile template oluşturun
-        // 4. Aşağıdaki değerleri güncelleyin:
+        // ========================================
+        // BLOG SİSTEMİ FONKSİYONLARI
+        // ========================================
         
-        const EMAILJS_PUBLIC_KEY = "X1wUqkj967mvWAREw";      // Account > API Keys > Public Key
-        const EMAILJS_SERVICE_ID = "service_msze0ij";      // Email Services > Service ID
-        const EMAILJS_TEMPLATE_ID = "template_q67xtib";    // Email Templates > Template ID
+        // Blog kartlarını oluştur ve sayfaya ekle
+        function renderBlogCards() {
+            const blogGrid = document.getElementById('blog-grid');
+            if (!blogGrid) return;
+            
+            blogGrid.innerHTML = '';
+            
+            blogPosts.forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'blog-card';
+                card.onclick = () => openBlogModal(post.id);
+                
+                // Resim alanı - resim varsa göster, yoksa icon göster
+                let imageContent;
+                if (post.image && post.image.trim() !== '') {
+                    imageContent = `
+                        <img src="${post.image}" alt="${post.title}" onerror="this.parentElement.innerHTML='${getCategoryIcon(post.category)}'">
+                        <span class="blog-category">${post.category}</span>
+                    `;
+                } else {
+                    imageContent = `
+                        ${getCategoryIcon(post.category)}
+                        <span class="blog-category">${post.category}</span>
+                    `;
+                }
+                
+                card.innerHTML = `
+                    <div class="blog-image">
+                        ${imageContent}
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <p class="blog-date">${post.date}</p>
+                            <p class="blog-author">${post.author}</p>
+                        </div>
+                        <h3>${post.title}</h3>
+                        <p>${post.summary}</p>
+                        <span class="blog-link">
+                            Devamını Oku 
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                            </svg>
+                        </span>
+                    </div>
+                `;
+                
+                blogGrid.appendChild(card);
+            });
+        }
         
-        // EmailJS'i başlat
+        // Blog modalını aç
+        function openBlogModal(postId) {
+            const post = blogPosts.find(p => p.id === postId);
+            if (!post) return;
+            
+            const modal = document.getElementById('blog-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalCategory = document.getElementById('modal-category');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDate = document.getElementById('modal-date');
+            const modalAuthor = document.getElementById('modal-author');
+            const modalContent = document.getElementById('modal-content');
+            
+            // Resim alanı
+            if (post.image && post.image.trim() !== '') {
+                modalImage.innerHTML = `<img src="${post.image}" alt="${post.title}" onerror="this.parentElement.innerHTML='${getCategoryIcon(post.category)}'">`;
+            } else {
+                modalImage.innerHTML = getCategoryIcon(post.category);
+            }
+            
+            modalCategory.textContent = post.category;
+            modalTitle.textContent = post.title;
+            modalDate.innerHTML = `
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/>
+                </svg>
+                ${post.date}
+            `;
+            modalAuthor.innerHTML = `
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                ${post.author}
+            `;
+            modalContent.innerHTML = post.content;
+            
+            // Modalı göster
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Animasyon için küçük gecikme
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 10);
+        }
+        
+        // Blog modalını kapat
+        function closeBlogModal() {
+            const modal = document.getElementById('blog-modal');
+            modal.style.opacity = '0';
+            
+            setTimeout(() => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+        
+        // Modal dışına tıklayınca kapat
+        document.getElementById('blog-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBlogModal();
+            }
+        });
+        
+        // ESC tuşu ile modalı kapat
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBlogModal();
+            }
+        });
+        
+        // Sayfa yüklendiğinde blog kartlarını oluştur
+        document.addEventListener('DOMContentLoaded', function() {
+            renderBlogCards();
+        });
+
+        // ========================================
+        // EMAILJS YAPILANDIRMASI
+        // ========================================
+        
+        const EMAILJS_PUBLIC_KEY = "X1wUqkj967mvWAREw";
+        const EMAILJS_SERVICE_ID = "service_msze0ij";
+        const EMAILJS_TEMPLATE_ID = "template_q67xtib";
+        
         emailjs.init(EMAILJS_PUBLIC_KEY);
         
         // Form gönderimi
@@ -1371,15 +1986,12 @@
             const submitBtn = document.getElementById('submit-btn');
             const formStatus = document.getElementById('form-status');
             
-            // Butonu devre dışı bırak
             submitBtn.disabled = true;
             submitBtn.textContent = 'Gönderiliyor...';
             
-            // Loading durumu göster
             formStatus.className = 'form-status loading';
             formStatus.textContent = 'Mesajınız gönderiliyor...';
             
-            // Form verilerini hazırla
             const templateParams = {
                 from_name: document.getElementById('name').value,
                 from_email: document.getElementById('email').value,
@@ -1389,7 +2001,6 @@
                 to_email: 'hukukdanismanlikee@gmail.com'
             };
             
-            // EmailJS ile gönder
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
@@ -1408,11 +2019,15 @@
                 });
         });
 
+        // ========================================
+        // NAVİGASYON FONKSİYONLARI
+        // ========================================
+        
         function toggleMenu() {
             document.querySelector('.nav-links').classList.toggle('active');
         }
 
-        // Smooth scroll for navigation links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1422,13 +2037,12 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile menu if open
                     document.querySelector('.nav-links').classList.remove('active');
                 }
             });
         });
 
-        // Navbar background change on scroll
+        // Navbar scroll efekti
         window.addEventListener('scroll', function() {
             const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
